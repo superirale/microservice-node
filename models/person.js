@@ -1,11 +1,20 @@
 import mongoose, {Schema} from 'mongoose';
 
-const personSchema = Schema({
+const PersonSchema = Schema({
    name: String,
    age: Number,
    nationality: String
 });
 //model validation
-const Person = mongoose.model("Person", personSchema);
+
+PersonSchema.pre('save', next => {
+  now = new Date();
+  if(!this.createdAt) {
+    this.createdAt = now;
+  }
+  next();
+});
+
+const Person = mongoose.model("Person", PersonSchema);
 
 export default Person;
