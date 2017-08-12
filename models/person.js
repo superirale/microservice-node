@@ -5,6 +5,7 @@ const personSchema = Schema({
    age: Number,
    nationality: String
 });
+//model validation
 const Person = mongoose.model("Person", personSchema);
 
 export default Person;
