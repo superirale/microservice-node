@@ -1,11 +1,11 @@
-import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const PersonSchema = Schema({
    name: String,
    age: Number,
    nationality: String
 });
-//model validation
 
 PersonSchema.pre('save', next => {
   now = new Date();
@@ -17,4 +17,4 @@ PersonSchema.pre('save', next => {
 
 const Person = mongoose.model("Person", PersonSchema);
 
-export default Person;
+module.exports = Person;

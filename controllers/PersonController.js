@@ -1,25 +1,24 @@
-import Person from '../models/person';
+const Person = require("../models/person.js");
 
-export const person_create = (req, res) => {
+exports.person_create = (req, res) => {
 
 	const person = new Person(req.body);
 	person.save( (err) => {
-		if (err, person)
+		if (err)
 	   		return res.status(404).send('Resource not found!');
 
 		res.send(person);
 	});
 }
 
-export const person_get = (req, res) => {
+exports.person_get = (req, res) => {
 	Person.findOne({ _id: req.params.id}, '', (err, person) => {
 		if (err)
 	   		return res.status(404).send('Resource not found!');
 		res.send(person);
 	});
 }
-
-export const person_list = (req, res) => {
+exports.person_list = (req, res) => {
 
 	Person.find({}, '', (err, people) => {
 		if (err)
@@ -28,7 +27,7 @@ export const person_list = (req, res) => {
 	});
 }
 
-export const person_update = (req, res) => {
+exports.person_update = (req, res) => {
 
 	Person.findByIdAndUpdate(req.params.id, req.body, (err, person) => {
 		if(err)
@@ -37,7 +36,7 @@ export const person_update = (req, res) => {
 	});
 }
 
-export const person_delete = (req, res) => {
+exports.person_delete = (req, res) => {
 
 	Person.findByIdAndRemove(req.params.id, (err) => {
 		if(err)

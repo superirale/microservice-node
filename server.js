@@ -1,10 +1,12 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import multer from 'multer';
-import {} from 'dotenv/config'
-import router from './router';
+"use strict";
+const express = require('express');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const dotenv = require('dotenv').config();
+let router = require('./router');
+
 
 
 //add multer for multipart/form-data
@@ -27,4 +29,4 @@ app.use('/api', router);
 
 app.listen(process.env.APP_PORT);
 
-export default app; // for testing
+// export default app; // for testing
